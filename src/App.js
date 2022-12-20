@@ -16,7 +16,7 @@ function App() {
     });
     setTimeout(() => {
       setAlert(null);
-    }, 2000);
+    }, 1500);
   };
 
   const toggleMode = () => {
@@ -24,10 +24,12 @@ function App() {
       setMode('dark');
       document.body.style.backgroundColor = 'black';
       showAlert('Dark mode enabled', 'success');
+      document.title = 'TextUtils - Dark Mode';
     } else {
       setMode('light');
       document.body.style.backgroundColor = 'white';
       showAlert('Dark mode disabled', 'success');
+      document.title = 'TextUtils - Light Mode';
     }
   };
 
