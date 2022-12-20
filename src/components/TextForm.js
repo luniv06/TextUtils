@@ -6,7 +6,7 @@ export default function TextForm(props) {
     setText(newText);
   };
   const handleLowClick = () => {
-    let newText = text.toUpperCase();
+    let newText = text.toLowerCase();
     setText(newText);
   };
   const handleOnChange = (event) => {
@@ -14,7 +14,7 @@ export default function TextForm(props) {
     setText(event.target.value);
   };
 
-  const [text, setText] = useState('Enter text here');
+  const [text, setText] = useState('');
   return (
     <>
       <div className="container">
@@ -26,6 +26,7 @@ export default function TextForm(props) {
             rows="8"
             value={text}
             onChange={handleOnChange}
+            placeholder="Enter text here"
           ></textarea>
         </div>
         <button className="btn btn-primary mx-2" onClick={handleUpClick}>
