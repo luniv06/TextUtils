@@ -71,7 +71,7 @@ function App(props) {
             />
           }
         />
-        <Route exact path="/about" element={<About />} />
+        <Route exact path="/about" element={<About mode={mode} />} />
       </Routes>
       {/* <RouterProvider router={router} />
       <div className="container my-3">

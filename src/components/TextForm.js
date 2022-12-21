@@ -20,6 +20,7 @@ export default function TextForm(props) {
     var text = document.getElementById('myBox');
     text.select();
     navigator.clipboard.writeText(text.value);
+    document.getSelection().removeAllRanges();
     props.showAlert('Copied to clipboard', 'success');
   };
 
@@ -55,19 +56,39 @@ export default function TextForm(props) {
             }}
           ></textarea>
         </div>
-        <button className="btn btn-primary mx-2" onClick={handleUpClick}>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-primary mx-2 my-2"
+          onClick={handleUpClick}
+        >
           Convert to uppercase
         </button>
-        <button className="btn btn-primary mx-2" onClick={handleLowClick}>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-primary mx-2 my-2"
+          onClick={handleLowClick}
+        >
           Convert to lowercase
         </button>
-        <button className="btn btn-primary mx-2" onClick={handleCopy}>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-primary mx-2 my-2"
+          onClick={handleCopy}
+        >
           Copy Text
         </button>
-        <button className="btn btn-primary mx-2" onClick={handleExtraSpaces}>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-primary mx-2 my-2"
+          onClick={handleExtraSpaces}
+        >
           Remove Extra Spaces
         </button>
-        <button className="btn btn-primary mx-2" onClick={handleClearText}>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-primary mx-2 my-2"
+          onClick={handleClearText}
+        >
           Clear Text
         </button>
       </div>
@@ -81,14 +102,13 @@ export default function TextForm(props) {
           {text.split(' ').filter((word) => word !== '').length} words and{' '}
           {text.length} characters{' '}
         </p>
-        <p> {0.008 * text.split(' ').length} minutes read </p>
-        <h3> Preview: </h3>
         <p>
           {' '}
-          {text.length > 0
-            ? text
-            : 'Enter text in the box above to preview it'}{' '}
+          {0.008 * text.split(' ').filter((word) => word !== '').length} minutes
+          read{' '}
         </p>
+        <h3> Preview: </h3>
+        <p> {text.length > 0 ? text : 'Nothing to preview'} </p>
       </div>
     </>
   );

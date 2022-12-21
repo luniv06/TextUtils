@@ -1,30 +1,35 @@
 import React, { useState } from 'react';
 
-export default function About() {
-  const [btnText, setBtnText] = useState('Enable Dark Mode');
+export default function About(props) {
+  // const [btnText, setBtnText] = useState('Enable Dark Mode');
 
-  //   const [bgColor, setBgColor] = useState('white');
-  const [customStyle, setCustomStyle] = useState({
-    color: 'black',
-    backgroundColor: 'white',
-  });
-  const handleBtnClick = () => {
-    if (!btnText.localeCompare('Enable Dark Mode')) {
-      setBtnText('Disable Dark Mode');
-    } else {
-      setBtnText('Enable Dark Mode');
-    }
-    if (!customStyle.backgroundColor.localeCompare('white')) {
-      setCustomStyle({
-        color: 'white',
-        backgroundColor: 'black',
-      });
-    } else {
-      setCustomStyle({
-        color: 'black',
-        backgroundColor: 'white',
-      });
-    }
+  // //   const [bgColor, setBgColor] = useState('white');
+  // const [customStyle, setCustomStyle] = useState({
+  //   color: 'black',
+  //   backgroundColor: 'white',
+  // });
+  // const handleBtnClick = () => {
+  //   if (!btnText.localeCompare('Enable Dark Mode')) {
+  //     setBtnText('Disable Dark Mode');
+  //   } else {
+  //     setBtnText('Enable Dark Mode');
+  //   }
+  //   if (!customStyle.backgroundColor.localeCompare('white')) {
+  //     setCustomStyle({
+  //       color: 'white',
+  //       backgroundColor: 'black',
+  //     });
+  //   } else {
+  //     setCustomStyle({
+  //       color: 'black',
+  //       backgroundColor: 'white',
+  //     });
+  //   }
+  // };
+
+  const customStyle = {
+    backgroundColor: props.mode === 'light' ? 'white' : 'black',
+    color: props.mode === 'light' ? 'black' : 'white',
   };
 
   return (
@@ -34,7 +39,7 @@ export default function About() {
         <div className="accordion-item">
           <h2 className="accordion-header" id="headingOne">
             <button
-              className="accordion-button"
+              className="accordion-button collapsed"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#collapseOne"
@@ -42,7 +47,7 @@ export default function About() {
               aria-controls="collapseOne"
               style={customStyle}
             >
-              Accordion Item #1
+              <strong>Analyze your text</strong>
             </button>
           </h2>
           <div
@@ -52,14 +57,8 @@ export default function About() {
             data-bs-parent="#accordionExample"
           >
             <div className="accordion-body" style={customStyle}>
-              <strong>This is the first item's accordion body.</strong> It is
-              shown by default, until the collapse plugin adds the appropriate
-              classes that we use to style each element. These classes control
-              the overall appearance, as well as the showing and hiding via CSS
-              transitions. You can modify any of this with custom CSS or
-              overriding our default variables. It's also worth noting that just
-              about any HTML can go within the <code>.accordion-body</code>,
-              though the transition does limit overflow.
+              Textutils gives you a way to analyze your text quickly and
+              efficiently.
             </div>
           </div>
         </div>
@@ -74,7 +73,7 @@ export default function About() {
               aria-controls="collapseTwo"
               style={customStyle}
             >
-              Accordion Item #2
+              <strong>Free to use</strong>
             </button>
           </h2>
           <div
@@ -84,14 +83,8 @@ export default function About() {
             data-bs-parent="#accordionExample"
           >
             <div className="accordion-body" style={customStyle}>
-              <strong>This is the second item's accordion body.</strong> It is
-              hidden by default, until the collapse plugin adds the appropriate
-              classes that we use to style each element. These classes control
-              the overall appearance, as well as the showing and hiding via CSS
-              transitions. You can modify any of this with custom CSS or
-              overriding our default variables. It's also worth noting that just
-              about any HTML can go within the <code>.accordion-body</code>,
-              though the transition does limit overflow.
+              Textutils is a free characyer counter tool that provides instant
+              character count and word count statistics for a given text.
             </div>
           </div>
         </div>
@@ -106,7 +99,7 @@ export default function About() {
               aria-controls="collapseThree"
               style={customStyle}
             >
-              Accordion Item #3
+              <strong>Browser Compatible</strong>
             </button>
           </h2>
           <div
@@ -116,19 +109,13 @@ export default function About() {
             data-bs-parent="#accordionExample"
           >
             <div className="accordion-body" style={customStyle}>
-              <strong>This is the third item's accordion body.</strong> It is
-              hidden by default, until the collapse plugin adds the appropriate
-              classes that we use to style each element. These classes control
-              the overall appearance, as well as the showing and hiding via CSS
-              transitions. You can modify any of this with custom CSS or
-              overriding our default variables. It's also worth noting that just
-              about any HTML can go within the <code>.accordion-body</code>,
-              though the transition does limit overflow.
+              This word counter software works in any web browsers such as
+              Chrome, Firefox, Edge, Opera, Safari.
             </div>
           </div>
         </div>
       </div>
-      <div className="container">
+      {/* <div className="container">
         <button
           type="button"
           className="btn btn-primary my-3"
@@ -136,7 +123,7 @@ export default function About() {
         >
           {btnText}
         </button>
-      </div>
+      </div> */}
     </div>
   );
 }
